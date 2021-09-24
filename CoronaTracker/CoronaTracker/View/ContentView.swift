@@ -15,6 +15,7 @@ struct GradientBackgroundView: View {
 
 struct ContentView: View {
 
+    // observed = viewmodel
     @ObservedObject var network = Network()
     
     init() {

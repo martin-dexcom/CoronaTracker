@@ -23,9 +23,7 @@ class Network : ObservableObject {
                     self.rawCountries = response.rawData
                     self.totalCases = response.summaryStats.global.confirmed
                     
-                    // TODO: Remove testing lines
-                    print(self.totalCases!)
-                    print(self.rawCountries![2])
+                    
                     
                 } else {
                      print("Fetch failed: \(error?.localizedDescription ?? "Unknown error")")
