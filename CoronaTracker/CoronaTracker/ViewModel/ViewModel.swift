@@ -9,7 +9,7 @@ import Foundation
 
 class ViewModel{
     
-    
+    // hihi
     func orderData(rawCountries: [RawData]) -> [String: (countryRegion: String, confirmed: Int, deaths: Int, recovered: Int)]{
         
         var countries = [String: (countryRegion: String, confirmed: Int, deaths: Int, recovered: Int)]()
