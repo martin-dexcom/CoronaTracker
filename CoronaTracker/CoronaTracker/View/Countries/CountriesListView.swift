@@ -21,8 +21,7 @@ struct CountriesListView: View {
 
 struct CountriesListView_Previews: PreviewProvider {
     static var previews: some View {
-        Text("hola")
-        //        CountriesListView(countries: testCountries)
+        CountriesListView(countries: testCountries)
     }
 }
 

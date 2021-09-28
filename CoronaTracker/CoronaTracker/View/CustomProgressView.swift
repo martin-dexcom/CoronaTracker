@@ -21,9 +21,6 @@ struct CustomProgressView_Previews: PreviewProvider {
         Group{
             CustomProgressView(color: Color.blue)
             CustomProgressView()
-                
-//                .background(Color.black)
-            
         }
     }
 }

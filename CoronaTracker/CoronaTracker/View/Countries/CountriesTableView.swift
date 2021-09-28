@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CountriesTableView: View {
-    let rawCountries : [Country]?
+    let countries : [Country]?
     
     var body: some View {
         VStack() {
@@ -20,7 +20,7 @@ struct CountriesTableView: View {
                     Spacer()
             }
             ScrollView(.vertical){
-                if let countries = rawCountries {
+                if let countries = countries {
                     CountriesListView(countries: countries)
                 }
                 else {
@@ -34,9 +34,6 @@ struct CountriesTableView: View {
 
 struct CountriesTableView_Previews: PreviewProvider {
     static var previews: some View {
-        Text("hola")
-
-//        CountriesTableView(rawCountries: testCountries)
-            
+        CountriesTableView(countries: testCountries)
     }
 }
