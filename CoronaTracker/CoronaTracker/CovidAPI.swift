@@ -19,14 +19,14 @@ class CovidAPI {
         }
         
         URLSession.shared.dataTask(with: url) { data, response, error in
-            if let response = try? JSONDecoder().decode(Response.self, from: data!){
-                self.response.send(response)
-                
-            } else {
-                print("Fetch failed: \(error?.localizedDescription ?? "Unknown error")")
+            if let data = data {
+                if let response = try? JSONDecoder().decode(Response.self, from: data) {
+                    self.response.send(response)
+                    return
+                }
             }
+            print("Fetch failed: \(error?.localizedDescription ?? "Unknown error")")
         }.resume()
         return response
     }
-    
 }
