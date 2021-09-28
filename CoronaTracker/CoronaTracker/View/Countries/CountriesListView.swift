@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CountriesListView: View {
-    let countries : [RawData]
+    let countries : [Country]
     
     var body: some View {
         LazyVStack(spacing:8){
@@ -21,7 +21,8 @@ struct CountriesListView: View {
 
 struct CountriesListView_Previews: PreviewProvider {
     static var previews: some View {
-        CountriesListView(countries: testCountries)
+        Text("hola")
+        //        CountriesListView(countries: testCountries)
     }
 }
 

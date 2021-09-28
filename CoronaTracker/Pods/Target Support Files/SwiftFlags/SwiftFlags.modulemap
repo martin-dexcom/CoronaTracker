@@ -1,0 +1,6 @@
+framework module SwiftFlags {
+  umbrella header "SwiftFlags-umbrella.h"
+
+  export *
+  module * { export * }
+}

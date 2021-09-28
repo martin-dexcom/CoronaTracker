@@ -27,8 +27,8 @@ struct Stats: Codable {
 
 // MARK: - RawData
 struct RawData: Codable, Identifiable {
-//    let provinceState: String
     let id = UUID()
+//    let provinceState: String
     let countryRegion: String
     let confirmed: String
     let deaths: String
@@ -41,6 +41,7 @@ struct RawData: Codable, Identifiable {
     case deaths = "Deaths"
     case recovered = "Recovered"
   }
+
 }
 
 

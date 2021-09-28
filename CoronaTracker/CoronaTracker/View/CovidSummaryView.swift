@@ -13,13 +13,12 @@ struct GradientBackgroundView: View {
     }
 }
 
-struct ContentView: View {
-
-    // observed = viewmodel
-    @ObservedObject var network = Network()
+struct CovidSummaryView: View {
+    
+    @ObservedObject var viewModel = CovidSummaryViewModel()
     
     init() {
-        network.getData()
+        viewModel.getAllCovidData()
     }
     
     var body: some View {
@@ -27,8 +26,8 @@ struct ContentView: View {
             GradientBackgroundView()
             VStack(alignment: .leading ,spacing: nil){
                 AppTitle(icon: "🦠", title: "CoronaTracker")
-                GlobalCasesView(cases: network.totalCases)
-                CountriesTableView(rawCountries: network.rawCountries)
+                GlobalCasesView(cases: viewModel.covidTotalCases)
+                CountriesTableView(rawCountries: viewModel.countries)
                     .padding(.top, 21)
             }
             .padding(.leading,28)
@@ -39,7 +38,7 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        CovidSummaryView()
     }
 }
 

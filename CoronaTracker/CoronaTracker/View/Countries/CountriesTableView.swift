@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CountriesTableView: View {
-    let rawCountries : [RawData]?
+    let rawCountries : [Country]?
     
     var body: some View {
         VStack() {
@@ -34,7 +34,9 @@ struct CountriesTableView: View {
 
 struct CountriesTableView_Previews: PreviewProvider {
     static var previews: some View {
-        CountriesTableView(rawCountries: testCountries)
+        Text("hola")
+
+//        CountriesTableView(rawCountries: testCountries)
             
     }
 }
