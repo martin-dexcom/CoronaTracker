@@ -18,7 +18,8 @@ class CovidAPI {
             return response
         }
         
-        URLSession.shared.dataTask(with: url) { data, response, error in
+        URLSession.shared.dataTask(with: url) { [weak self] data , response, error in
+            guard let self = self else { return }
             if let data = data {
                 if let response = try? JSONDecoder().decode(Response.self, from: data) {
                     self.response.send(response)

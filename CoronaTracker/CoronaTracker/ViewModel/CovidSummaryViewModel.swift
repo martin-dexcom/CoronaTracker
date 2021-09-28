@@ -46,5 +46,5 @@ class CovidSummaryViewModel: ObservableObject{
         countries = response.rawData.map({ rawCountry in
             Country(rawData: rawCountry)
         })
-    }    
+    }
 }
