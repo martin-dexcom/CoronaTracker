@@ -17,6 +17,7 @@ struct GlobalCasesView: View {
                 Spacer()
                 if let covidCases = cases {
                     Text("\(covidCases)").modifier(HeaderStyle())
+                        .accessibility(identifier: "id_global_covid_cases")
                 }
                 else {
                     Text("").modifier(HeaderStyle())
@@ -30,6 +31,7 @@ struct GlobalCasesView: View {
             if let covidCases = cases {
                 Text("\(covidCases)").modifier(TotalCasesStyle())
                     .padding(.bottom,18)
+                    .accessibility(identifier: "id_total_covid_cases")
             }
             else {
                 Text("").modifier(TotalCasesStyle())
