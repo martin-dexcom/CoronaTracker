@@ -34,7 +34,13 @@ struct StatsView: View {
 
 struct CountryRowView: View {
     let country: Country
+    let id_row_name: String
     let defaultFlag = "🇲🇽"
+    
+    init(country: Country){
+        self.country = country
+        self.id_row_name = "id_row_"+country.countryRegion.replacingOccurrences(of: " ", with: "_") 
+    }
     
     var body: some View {
         HStack{
@@ -44,7 +50,7 @@ struct CountryRowView: View {
                     .accessibility(identifier: "id_row_flag")
                 Text(country.countryRegion)
                     .modifier(HeaderStyle())
-                    .accessibility(identifier: "id_row_name")
+                    .accessibility(identifier: id_row_name)
             }
             Spacer()
             StatsView(confirmed: country.confirmed, deaths: country.deaths, recovered: country.recovered)
