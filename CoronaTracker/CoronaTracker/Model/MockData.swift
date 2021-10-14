@@ -8,7 +8,11 @@
 import Foundation
 
 
-let testRawCountry = RawData(provinceState: "", countryRegion: "Mexico", confirmed: "120000", deaths: "1200", recovered: "20")
+let testRawCountry = RawData(provinceState: "Guadalajara", countryRegion: "Mexico", confirmed: "120000", deaths: "1200", recovered: "20")
+
+let testCountry = Country(rawData: testRawCountry)
+
+let testProvince = ProvinceState(rawData: testRawCountry)
 
 let testCountries = [
     Country(rawData: RawData(provinceState: "", countryRegion: "Mexico", confirmed: "120000", deaths: "1200", recovered: "0")),
@@ -27,3 +31,15 @@ let testCountries = [
     Country(rawData: RawData(provinceState: "", countryRegion: "China", confirmed: "120000", deaths: "1200", recovered: "0")),
 ]
 
+let testProvinces = [
+    ProvinceState(rawData: RawData(provinceState: "Guadalajara", countryRegion: "Mexico", confirmed: "120000", deaths: "1200", recovered: "0")),
+    ProvinceState(rawData: RawData(provinceState: "CDMX", countryRegion: "Mexico", confirmed: "120000", deaths: "1200", recovered: "0")),
+    ProvinceState(rawData: RawData(provinceState: "Tijuana", countryRegion: "Mexico", confirmed: "120000", deaths: "1200", recovered: "0")),
+    ProvinceState(rawData: RawData(provinceState: "Los Angeles", countryRegion: "USA", confirmed: "120000", deaths: "1200", recovered: "0")),
+    ProvinceState(rawData: RawData(provinceState: "Tokyo", countryRegion: "Japan", confirmed: "120000", deaths: "1200", recovered: "0")),
+    ProvinceState(rawData: RawData(provinceState: "Osaka", countryRegion: "Japan", confirmed: "120000", deaths: "1200", recovered: "0")),
+]
+
+let testRowProvince = RowContent(province: testProvince)
+
+let testRowCountry = RowContent(country: testCountry)
