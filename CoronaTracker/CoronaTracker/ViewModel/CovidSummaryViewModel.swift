@@ -40,6 +40,30 @@ struct Country: Identifiable{
     }
 }
 
+struct RowContent: Identifiable{
+    let id : UUID
+    let titlePlaholder: String
+    let confirmedPlaholder: Int
+    let deathsPlaceholder: Int
+    let recoveredPlaceholder: Int
+    
+    init(country: Country){
+        id = country.id
+        titlePlaholder = country.countryRegion
+        confirmedPlaholder = country.confirmed
+        deathsPlaceholder =  country.deaths
+        recoveredPlaceholder = country.recovered
+    }
+    
+    init(province: ProvinceState){
+        id = province.id
+        titlePlaholder = province.provinceState
+        confirmedPlaholder = province.confirmed
+        deathsPlaceholder =  province.deaths
+        recoveredPlaceholder = province.recovered
+    }
+}
+
 class CovidSummaryViewModel: ObservableObject{
 
     let covidAPI = CovidAPI()
