@@ -42,8 +42,8 @@ struct RowView: View {
 struct RowView_Previews: PreviewProvider {
     static var previews: some View {
         VStack{
-            RowView(rowContent: testRowProvince)
-            RowView(rowContent: testRowCountry)
+            RowView(rowContent: testProvinceRow)
+            RowView(rowContent: testCountryRow)
         }
     }
 }

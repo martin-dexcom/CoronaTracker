@@ -8,13 +8,34 @@
 import SwiftUI
 
 struct TableView: View {
+    let tableTitle: String
+    let rowsContent: [RowContent]?
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack() {
+            HStack{
+                Spacer()
+                Text(tableTitle)
+                    .foregroundColor(.white)
+                    .modifier(HeaderStyle())
+                    Spacer()
+            }
+            ScrollView(.vertical){
+                if let rowsContent = rowsContent {
+                    ListView(rowsContent: rowsContent)
+                }
+                else {
+                    CustomProgressView(color: Color.white)
+                }
+            }
+        }
+        .modifier(CountriesTableStyle())
     }
 }
 
+
 struct TableView_Previews: PreviewProvider {
     static var previews: some View {
-        TableView()
+        TableView(tableTitle: "Countries", rowsContent: testCountriesList)
     }
 }

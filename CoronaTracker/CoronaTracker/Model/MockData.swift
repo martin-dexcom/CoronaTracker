@@ -40,6 +40,15 @@ let testProvinces = [
     ProvinceState(rawData: RawData(provinceState: "Osaka", countryRegion: "Japan", confirmed: "120000", deaths: "1200", recovered: "0")),
 ]
 
-let testRowProvince = RowContent(province: testProvince)
+let testProvinceRow = RowContent(province: testProvince)
 
-let testRowCountry = RowContent(country: testCountry)
+let testCountryRow = RowContent(country: testCountry)
+
+let testCountriesList = testCountries.map({ country in
+    RowContent(country: country)
+})
+
+
+let testProvincesList = testProvinces.map({ province in
+    RowContent(province: province)
+})
