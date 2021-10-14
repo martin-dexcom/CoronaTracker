@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+
 struct CountriesListView: View {
     let countries : [Country]
     
