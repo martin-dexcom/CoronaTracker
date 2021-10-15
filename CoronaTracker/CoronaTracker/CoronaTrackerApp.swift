@@ -11,8 +11,14 @@ import SwiftUI
 struct CoronaTrackerApp: App {
     var body: some Scene {
         WindowGroup {
-//            CovidSummaryView()
-            CitiesSummaryView()
+            TabView {
+                CovidSummaryView().tabItem {
+                    Label("Summary", systemImage: "square.and.pencil").foregroundColor(.white)
+                }
+                CitiesSummaryView().tabItem{
+                    Label("Cities Summary", systemImage: "square.and.pencil").foregroundColor(.white)
+                }
+            }
         }
     }
 }
