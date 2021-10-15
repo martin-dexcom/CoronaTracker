@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		182CF97326EFE72F008CF757 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182CF97226EFE72F008CF757 /* Response.swift */; };
+		186DDB90271A40FF00E45849 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186DDB8F271A40FF00E45849 /* SearchBar.swift */; };
+		186DDB92271A41DC00E45849 /* CountryTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186DDB91271A41DC00E45849 /* CountryTableView.swift */; };
 		18716BDF26FA2BA800BAD4C2 /* Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18716BDE26FA2BA800BAD4C2 /* Modifiers.swift */; };
 		18716BE826FA3A2300BAD4C2 /* Titles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18716BE726FA3A2300BAD4C2 /* Titles.swift */; };
 		189DEF102718CDDF005F4E34 /* CountryStatsBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189DEF0F2718CDDF005F4E34 /* CountryStatsBoxView.swift */; };
@@ -53,6 +55,8 @@
 
 /* Begin PBXFileReference section */
 		182CF97226EFE72F008CF757 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		186DDB8F271A40FF00E45849 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		186DDB91271A41DC00E45849 /* CountryTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryTableView.swift; sourceTree = "<group>"; };
 		18716BDE26FA2BA800BAD4C2 /* Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifiers.swift; sourceTree = "<group>"; };
 		18716BE726FA3A2300BAD4C2 /* Titles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Titles.swift; sourceTree = "<group>"; };
 		189DEF0F2718CDDF005F4E34 /* CountryStatsBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryStatsBoxView.swift; sourceTree = "<group>"; };
@@ -140,6 +144,8 @@
 				18716BDE26FA2BA800BAD4C2 /* Modifiers.swift */,
 				189DEF0F2718CDDF005F4E34 /* CountryStatsBoxView.swift */,
 				189DEF112718CECB005F4E34 /* CitiesSummaryView.swift */,
+				186DDB8F271A40FF00E45849 /* SearchBar.swift */,
+				186DDB91271A41DC00E45849 /* CountryTableView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -503,6 +509,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				186DDB92271A41DC00E45849 /* CountryTableView.swift in Sources */,
 				18B8C4B226FC473A008BB0CE /* GlobalCasesView.swift in Sources */,
 				18D9C7AB26FCE082007B4EE3 /* CountryRowView.swift in Sources */,
 				18716BE826FA3A2300BAD4C2 /* Titles.swift in Sources */,
@@ -518,6 +525,7 @@
 				18D3E5CE26FBB623003548BD /* CovidAPI.swift in Sources */,
 				182CF97326EFE72F008CF757 /* Response.swift in Sources */,
 				18B38FA326EA627E00734FCE /* CoronaTrackerApp.swift in Sources */,
+				186DDB90271A40FF00E45849 /* SearchBar.swift in Sources */,
 				189DEF152718CF80005F4E34 /* TableView.swift in Sources */,
 				18D3E5CA26FBA9D1003548BD /* CustomProgressView.swift in Sources */,
 				18D9C7AF26FD082F007B4EE3 /* CountriesTableView.swift in Sources */,

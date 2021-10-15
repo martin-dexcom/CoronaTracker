@@ -11,6 +11,8 @@ struct TableView: View {
     let tableTitle: String
     var rowsContent: [RowContent]? = nil
     
+    @State private var searchText = ""
+
     init(tableTitle: String, countries: [Country]?){
         self.tableTitle = tableTitle
         if let countries = countries {
@@ -38,16 +40,22 @@ struct TableView: View {
                     .modifier(HeaderStyle())
                     Spacer()
             }
-            ScrollView(.vertical){
-                if let rowsContent = rowsContent {
+            if let rowsContent = searchResults {
+                SearchBar(text: $searchText)
+                ScrollView(.vertical){
                     ListView(rowsContent: rowsContent)
                 }
-                else {
-                    CustomProgressView(color: Color.white)
-                }
+            }
+            else {
+                CustomProgressView(color: Color.white)
             }
         }
         .modifier(CountriesTableStyle())
+    }
+    
+    // Not sure is there's other way to return nil implicitly
+    var searchResults: [RowContent]? {
+        return rowsContent?.filter({ searchText.isEmpty ? true : $0.titlePlaholder.contains(searchText) }) ?? nil
     }
 }
 
