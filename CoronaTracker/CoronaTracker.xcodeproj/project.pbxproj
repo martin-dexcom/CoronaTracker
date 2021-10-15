@@ -11,10 +11,11 @@
 		18716BDF26FA2BA800BAD4C2 /* Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18716BDE26FA2BA800BAD4C2 /* Modifiers.swift */; };
 		18716BE826FA3A2300BAD4C2 /* Titles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18716BE726FA3A2300BAD4C2 /* Titles.swift */; };
 		189DEF102718CDDF005F4E34 /* CountryStatsBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189DEF0F2718CDDF005F4E34 /* CountryStatsBoxView.swift */; };
-		189DEF122718CECB005F4E34 /* ProvincesSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189DEF112718CECB005F4E34 /* ProvincesSummaryView.swift */; };
+		189DEF122718CECB005F4E34 /* CitiesSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189DEF112718CECB005F4E34 /* CitiesSummaryView.swift */; };
 		189DEF152718CF80005F4E34 /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189DEF142718CF80005F4E34 /* TableView.swift */; };
 		189DEF172718CF88005F4E34 /* RowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189DEF162718CF88005F4E34 /* RowView.swift */; };
 		189DEF192718CF97005F4E34 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189DEF182718CF97005F4E34 /* ListView.swift */; };
+		189DEF1B27193095005F4E34 /* TestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189DEF1A27193095005F4E34 /* TestViewModel.swift */; };
 		18B38FA326EA627E00734FCE /* CoronaTrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B38FA226EA627E00734FCE /* CoronaTrackerApp.swift */; };
 		18B38FA526EA627E00734FCE /* CovidSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B38FA426EA627E00734FCE /* CovidSummaryView.swift */; };
 		18B38FA726EA627F00734FCE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18B38FA626EA627F00734FCE /* Assets.xcassets */; };
@@ -56,10 +57,11 @@
 		18716BDE26FA2BA800BAD4C2 /* Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifiers.swift; sourceTree = "<group>"; };
 		18716BE726FA3A2300BAD4C2 /* Titles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Titles.swift; sourceTree = "<group>"; };
 		189DEF0F2718CDDF005F4E34 /* CountryStatsBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryStatsBoxView.swift; sourceTree = "<group>"; };
-		189DEF112718CECB005F4E34 /* ProvincesSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProvincesSummaryView.swift; sourceTree = "<group>"; };
+		189DEF112718CECB005F4E34 /* CitiesSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesSummaryView.swift; sourceTree = "<group>"; };
 		189DEF142718CF80005F4E34 /* TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
 		189DEF162718CF88005F4E34 /* RowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowView.swift; sourceTree = "<group>"; };
 		189DEF182718CF97005F4E34 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
+		189DEF1A27193095005F4E34 /* TestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewModel.swift; sourceTree = "<group>"; };
 		18B38F9F26EA627E00734FCE /* CoronaTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoronaTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18B38FA226EA627E00734FCE /* CoronaTrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoronaTrackerApp.swift; sourceTree = "<group>"; };
 		18B38FA426EA627E00734FCE /* CovidSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CovidSummaryView.swift; sourceTree = "<group>"; };
@@ -139,7 +141,7 @@
 				18D3E5C926FBA9D1003548BD /* CustomProgressView.swift */,
 				18716BDE26FA2BA800BAD4C2 /* Modifiers.swift */,
 				189DEF0F2718CDDF005F4E34 /* CountryStatsBoxView.swift */,
-				189DEF112718CECB005F4E34 /* ProvincesSummaryView.swift */,
+				189DEF112718CECB005F4E34 /* CitiesSummaryView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -148,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				18D9C7AC26FCF537007B4EE3 /* CovidSummaryViewModel.swift */,
+				189DEF1A27193095005F4E34 /* TestViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -506,7 +509,7 @@
 				18B8C4B226FC473A008BB0CE /* GlobalCasesView.swift in Sources */,
 				18D9C7AB26FCE082007B4EE3 /* CountryRowView.swift in Sources */,
 				18716BE826FA3A2300BAD4C2 /* Titles.swift in Sources */,
-				189DEF122718CECB005F4E34 /* ProvincesSummaryView.swift in Sources */,
+				189DEF122718CECB005F4E34 /* CitiesSummaryView.swift in Sources */,
 				18D9C7A826FCDA71007B4EE3 /* MockData.swift in Sources */,
 				18716BDF26FA2BA800BAD4C2 /* Modifiers.swift in Sources */,
 				18D9C7AD26FCF537007B4EE3 /* CovidSummaryViewModel.swift in Sources */,
@@ -515,6 +518,7 @@
 				189DEF102718CDDF005F4E34 /* CountryStatsBoxView.swift in Sources */,
 				189DEF172718CF88005F4E34 /* RowView.swift in Sources */,
 				18D9C7A326FCC508007B4EE3 /* CountriesListView.swift in Sources */,
+				189DEF1B27193095005F4E34 /* TestViewModel.swift in Sources */,
 				18D3E5CE26FBB623003548BD /* CovidAPI.swift in Sources */,
 				182CF97326EFE72F008CF757 /* Response.swift in Sources */,
 				18B38FA326EA627E00734FCE /* CoronaTrackerApp.swift in Sources */,

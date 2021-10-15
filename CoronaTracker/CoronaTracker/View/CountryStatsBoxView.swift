@@ -8,32 +8,30 @@
 import SwiftUI
 
 struct CountryStatsBoxView: View {
-    private let defaultFlag: String = "🇲🇽"
-    private let countryTitle: String = "Mexico"
-    private let totalCases: Int = 532225
-    private let deaths: Int = 112221
-    private let confirmed: Int = 210002
-    private let recovered: Int = 210002
+    let content: CountryStatsBoxContent
+    
+    init(content: CountryStatsBoxContent){
+        self.content = content
+    }
     
     var body: some View {
         VStack (alignment: .center){
-            Text(defaultFlag)
+            Text(content.flag)
                 .font(.system(size: 20))
-            Text(countryTitle.uppercased())
+            Text(content.countryTitle.uppercased())
                 .font(.system(size:20, weight: .black))
-
-            Text("532,225")
+            Text("120,000")
                 .font(.system(size:32, weight: .black))
             Text("Total cases")
                 .font(.system(size:10))
                 .padding(.bottom, 2)
             
             HStack {
-            StatsNumberView(statsNumber: deaths, statsNumberColor: Color.red, statsName: "total deaths")
+                StatsNumberView(statsNumber: content.deaths, statsNumberColor: Color.red, statsName: "total deaths")
                 Spacer()
-            StatsNumberView(statsNumber: confirmed, statsNumberColor: Color.yellow, statsName: "total active")
+                StatsNumberView(statsNumber: content.confirmed, statsNumberColor: Color.yellow, statsName: "total active")
                 Spacer()
-            StatsNumberView(statsNumber: recovered, statsNumberColor: Color.green, statsName: "total recovered")
+                StatsNumberView(statsNumber: content.recovered, statsNumberColor: Color.green, statsName: "total recovered")
                 
             }
         }
@@ -49,7 +47,7 @@ struct CountryStatsBoxView: View {
 struct CountryStatsBoxView_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
-            CountryStatsBoxView()
+            CountryStatsBoxView(content: CountryStatsBoxContent(country: testCountry))
         }
         .padding(28)
         .background(Color.blue)

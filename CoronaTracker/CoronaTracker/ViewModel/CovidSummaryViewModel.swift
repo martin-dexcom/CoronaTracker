@@ -7,6 +7,9 @@
 
 import Foundation
 import Combine
+import SwiftFlags
+
+
 
 struct ProvinceState: Identifiable{
     let id = UUID()
@@ -40,8 +43,12 @@ struct Country: Identifiable{
     }
 }
 
+
+let defaultFlag = "🇲🇽"
+
 struct RowContent: Identifiable{
     let id : UUID
+    let flagPlaceholder: String
     let titlePlaholder: String
     let confirmedPlaholder: Int
     let deathsPlaceholder: Int
@@ -49,6 +56,7 @@ struct RowContent: Identifiable{
     
     init(country: Country){
         id = country.id
+        flagPlaceholder = SwiftFlags.flag(for: country.countryRegion) ?? defaultFlag
         titlePlaholder = country.countryRegion
         confirmedPlaholder = country.confirmed
         deathsPlaceholder =  country.deaths
@@ -57,10 +65,27 @@ struct RowContent: Identifiable{
     
     init(province: ProvinceState){
         id = province.id
+        flagPlaceholder = SwiftFlags.flag(for: province.countryRegion) ?? defaultFlag
         titlePlaholder = province.provinceState
         confirmedPlaholder = province.confirmed
         deathsPlaceholder =  province.deaths
         recoveredPlaceholder = province.recovered
+    }
+}
+
+struct CountryStatsBoxContent {
+     let flag: String
+     let countryTitle: String
+     let deaths: Int
+     let confirmed: Int
+     let recovered: Int
+    
+    init(country: Country){
+        self.flag = SwiftFlags.flag(for: country.countryRegion) ?? defaultFlag
+        self.countryTitle = country.countryRegion
+        self.deaths = country.deaths
+        self.confirmed = country.confirmed
+        self.recovered = country.recovered
     }
 }
 
@@ -113,4 +138,16 @@ class CovidSummaryViewModel: ObservableObject{
         
         return allCountries
     }
+    
+    
+    func getCitiesFromCountry(countryRegion: String) -> [ProvinceState]{
+        
+        guard let provinces = provincesStates?.filter({ province in
+            province.countryRegion == countryRegion
+        }) else { return [] }
+        return provinces
+    }
+    
+    
+    
 }

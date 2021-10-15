@@ -11,7 +11,6 @@ import SwiftFlags
 struct RowView: View {
     let rowContent: RowContent
     let id_row_name: String
-    let defaultFlag = "🇲🇽"
     
     init(rowContent: RowContent){
         self.rowContent = rowContent
@@ -21,7 +20,7 @@ struct RowView: View {
     var body: some View {
         HStack{
             HStack{
-                Text(SwiftFlags.flag(for: rowContent.titlePlaholder) ?? defaultFlag)
+                Text(rowContent.flagPlaceholder)
                     .font(.system(size: 30))
                     .accessibility(identifier: "id_row_flag")
                 Text(rowContent.titlePlaholder)
