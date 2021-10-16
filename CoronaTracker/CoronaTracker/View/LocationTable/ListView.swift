@@ -14,7 +14,9 @@ struct ListView: View {
     var body: some View {
         LazyVStack(spacing:8){
             ForEach(rowsContent, id: \.id) { rowContent in
+                NavigationLink(destination: CitiesSummaryView(country: Country(rowContent: rowContent))) {
                 RowView(rowContent: rowContent)
+                }
             }
         }
     }

@@ -22,16 +22,18 @@ struct CovidSummaryView: View {
     }
     
     var body: some View {
-        ZStack {
-            GradientBackgroundView()
-            VStack(alignment: .leading ,spacing: nil){
-                AppTitle(icon: "🦠", title: "CoronaTracker")
-                GlobalCasesView(cases: viewModel.covidTotalCases)
-                TableView(tableTitle: "Countries", countries: viewModel.countries)
-                    .padding(.top, 21)
+        NavigationView {
+            ZStack {
+                GradientBackgroundView()
+                VStack(alignment: .leading ,spacing: nil){
+                    AppTitle(icon: "🦠", title: "CoronaTracker")
+                    GlobalCasesView(cases: viewModel.covidTotalCases)
+                    TableView(tableTitle: "Countries", countries: viewModel.countries)
+                        .padding(.top, 21)
+                }
+                .padding(.leading,28)
+                .padding(.trailing,28)
             }
-            .padding(.leading,28)
-            .padding(.trailing,28)
         }
     }
 }

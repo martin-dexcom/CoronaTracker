@@ -41,6 +41,13 @@ struct Country: Identifiable{
         deaths = Int(rawData.deaths) ?? 0
         recovered = Int(rawData.recovered) ?? 0
     }
+    
+    init(rowContent: RowContent){
+        countryRegion = rowContent.titlePlaholder
+        confirmed = rowContent.confirmedPlaholder
+        deaths = rowContent.deathsPlaceholder
+        recovered = rowContent.recoveredPlaceholder
+    }
 }
 
 

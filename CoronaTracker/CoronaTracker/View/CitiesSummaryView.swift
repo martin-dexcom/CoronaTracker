@@ -9,19 +9,23 @@ import SwiftUI
 
 struct CitiesSummaryView: View {
     
-    @ObservedObject var viewModel = CovidSummaryViewModel()
-    
-    init() {
-        viewModel.getAllCovidData()
-    }
+//    @ObservedObject var viewModel = CovidSummaryViewModel()
+//
+//    init() {
+//        viewModel.getAllCovidData()
+//    }
+    var country: Country
+//    init(cities: [RowContent]){
+//        self.cities = cities
+//    }
     
     var body: some View {
         ZStack {
             GradientBackgroundView()
             VStack(alignment: .leading ,spacing: nil){
-                CountryStatsBoxView(content: CountryStatsBoxContent(country: testCountry))
+                CountryStatsBoxView(content: CountryStatsBoxContent(country: country))
                     .padding(.bottom, 100)
-                TableView(tableTitle: "Cities", provinces: viewModel.provincesStates)
+//                TableView(tableTitle: "Cities", provinces: cities)
             }
             .padding(.leading,28)
             .padding(.trailing,28)
@@ -30,6 +34,6 @@ struct CitiesSummaryView: View {
 }
 struct ProvincesSummaryView_Previews: PreviewProvider {
     static var previews: some View {
-        CitiesSummaryView()
+        CitiesSummaryView(country: testCountry)
     }
 }
