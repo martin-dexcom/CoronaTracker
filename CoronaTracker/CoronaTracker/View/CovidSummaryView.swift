@@ -28,7 +28,7 @@ struct CovidSummaryView: View {
                 VStack(alignment: .leading ,spacing: nil){
                     AppTitle(icon: "🦠", title: "CoronaTracker")
                     GlobalCasesView(cases: viewModel.covidTotalCases)
-                    TableView(tableTitle: "Countries", countries: viewModel.countries)
+                    CountriesTableView(countries: viewModel.countries)
                         .padding(.top, 21)
                 }
                 .padding(.leading,28)

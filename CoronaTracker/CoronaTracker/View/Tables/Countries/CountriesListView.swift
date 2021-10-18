@@ -1,29 +1,27 @@
 //
-//  CountriesListView.swift
+//  ListView.swift
 //  CoronaTracker
 //
-//  Created by Jessica Anguiano on 9/23/21.
+//  Created by Jessica Anguiano on 10/14/21.
 //
 
 import SwiftUI
 
-
 struct CountriesListView: View {
-    let countries : [Country]
-    
+    let countries: [Country]
+
     var body: some View {
         LazyVStack(spacing:8){
             ForEach(countries, id: \.id) { country in
-                CountryRowView(country: country)
+                NavigationLink(destination: CitiesSummaryView(country: country)) {
+                    RowView(rowContent: country)
+                }
             }
         }
     }
 }
-
 struct CountriesListView_Previews: PreviewProvider {
     static var previews: some View {
         CountriesListView(countries: testCountries)
     }
 }
-
-

@@ -1,13 +1,13 @@
 //
-//  ListView.swift
+//  SwiftUIView.swift
 //  CoronaTracker
 //
-//  Created by Jessica Anguiano on 10/14/21.
+//  Created by Jessica Anguiano on 10/18/21.
 //
 
 import SwiftUI
 
-struct ListView: View {
+struct SwiftUIView: View {
     let rowsContent: [RowContent]
     var listDisplaysCities: Bool = false
 
@@ -21,8 +21,9 @@ struct ListView: View {
         }
     }
 }
-struct ListView_Previews: PreviewProvider {
+
+struct SwiftUIView_Previews: PreviewProvider {
     static var previews: some View {
-        ListView(rowsContent: testProvincesList)
+        SwiftUIView()
     }
 }

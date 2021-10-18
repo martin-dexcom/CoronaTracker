@@ -7,6 +7,25 @@
 
 import SwiftUI
 
+
+struct CountryStatsBoxContent {
+    let flag: String
+    let countryTitle: String
+    let deaths: Int
+    let confirmed: Int
+    let recovered: Int
+    let total: Int
+    
+    init(country: Country){
+        self.flag = country.flag
+        self.countryTitle = country.countryRegion
+        self.deaths = country.deaths
+        self.confirmed = country.confirmed
+        self.recovered = country.recovered
+        self.total = country.deaths+country.confirmed+country.recovered
+    }
+}
+
 struct CountryStatsBoxView: View {
     let content: CountryStatsBoxContent
     
@@ -20,7 +39,7 @@ struct CountryStatsBoxView: View {
                 .font(.system(size: 20))
             Text(content.countryTitle.uppercased())
                 .font(.system(size:20, weight: .black))
-            Text("120,000")
+            Text("\(content.total)")
                 .font(.system(size:32, weight: .black))
             Text("Total cases")
                 .font(.system(size:10))

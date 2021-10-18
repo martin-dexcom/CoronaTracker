@@ -9,15 +9,7 @@ import SwiftUI
 
 struct CitiesSummaryView: View {
     
-//    @ObservedObject var viewModel = CovidSummaryViewModel()
-//
-//    init() {
-//        viewModel.getAllCovidData()
-//    }
     var country: Country
-//    init(cities: [RowContent]){
-//        self.cities = cities
-//    }
     
     var body: some View {
         ZStack {
@@ -25,7 +17,7 @@ struct CitiesSummaryView: View {
             VStack(alignment: .leading ,spacing: nil){
                 CountryStatsBoxView(content: CountryStatsBoxContent(country: country))
                     .padding(.bottom, 100)
-//                TableView(tableTitle: "Cities", provinces: cities)
+                CitiesTableView(provinces: country.cities)
             }
             .padding(.leading,28)
             .padding(.trailing,28)

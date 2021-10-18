@@ -30,71 +30,24 @@ struct ProvinceState: Identifiable{
 
 struct Country: Identifiable{
     let id = UUID()
+    let flag: String
     let countryRegion: String
     var confirmed: Int
     var deaths: Int
     var recovered: Int
-    
+    var cities: [ProvinceState] = []
+
     init(rawData: RawData){
+        flag = SwiftFlags.flag(for: rawData.countryRegion) ?? defaultFlag
         countryRegion = rawData.countryRegion
         confirmed = Int(rawData.confirmed) ?? 0
         deaths = Int(rawData.deaths) ?? 0
         recovered = Int(rawData.recovered) ?? 0
     }
-    
-    init(rowContent: RowContent){
-        countryRegion = rowContent.titlePlaholder
-        confirmed = rowContent.confirmedPlaholder
-        deaths = rowContent.deathsPlaceholder
-        recovered = rowContent.recoveredPlaceholder
-    }
 }
 
 
-let defaultFlag = "🇲🇽"
 
-struct RowContent: Identifiable{
-    let id : UUID
-    let flagPlaceholder: String
-    let titlePlaholder: String
-    let confirmedPlaholder: Int
-    let deathsPlaceholder: Int
-    let recoveredPlaceholder: Int
-    
-    init(country: Country){
-        id = country.id
-        flagPlaceholder = SwiftFlags.flag(for: country.countryRegion) ?? defaultFlag
-        titlePlaholder = country.countryRegion
-        confirmedPlaholder = country.confirmed
-        deathsPlaceholder =  country.deaths
-        recoveredPlaceholder = country.recovered
-    }
-    
-    init(province: ProvinceState){
-        id = province.id
-        flagPlaceholder = SwiftFlags.flag(for: province.countryRegion) ?? defaultFlag
-        titlePlaholder = province.provinceState
-        confirmedPlaholder = province.confirmed
-        deathsPlaceholder =  province.deaths
-        recoveredPlaceholder = province.recovered
-    }
-}
-
-struct CountryStatsBoxContent {
-     let flag: String
-     let countryTitle: String
-     let deaths: Int
-     let confirmed: Int
-     let recovered: Int
-    
-    init(country: Country){
-        self.flag = SwiftFlags.flag(for: country.countryRegion) ?? defaultFlag
-        self.countryTitle = country.countryRegion
-        self.deaths = country.deaths
-        self.confirmed = country.confirmed
-        self.recovered = country.recovered
-    }
-}
 
 class CovidSummaryViewModel: ObservableObject{
 
@@ -104,13 +57,17 @@ class CovidSummaryViewModel: ObservableObject{
     @Published var countries : [Country]?
     @Published var covidTotalCases : Int?
     
+//    @Published var countriesForTest : [Country]?
+
+    
     func getAllCovidData() {
         covidAPI.getCovidStatsData().receive(on: RunLoop.main)
             .sink { response in
                 guard let response = response else { return }
                 self.totalCases(from: response)
-                self .provincesStates = self.getAllProvinces(from: response)
-                self.countries = self.getAllCountries(from: response)
+//                self .provincesStates = self.getAllProvinces(from: response)
+                self.countries = self.arrangeCountriesWithCities(from: response)
+//                self.printAllCities()
 
             }.store(in: &subscribers)
     }
@@ -118,20 +75,26 @@ class CovidSummaryViewModel: ObservableObject{
     private func totalCases(from response: Response){
         covidTotalCases = response.summaryStats.global.confirmed
     }
-    private func getAllProvinces(from response: Response) -> [ProvinceState]{
-        return response.rawData.map({ rawCountry in
-            ProvinceState(rawData: rawCountry)
-        })
-    }
+    
+//    private func getAllProvinces(from response: Response) -> [ProvinceState]{
+//        return response.rawData.map({ rawCountry in
+//            ProvinceState(rawData: rawCountry)
+//        })
+//    }
 
-    private func getAllCountries(from response: Response) -> [Country]{
+    
+    private func arrangeCountriesWithCities(from response: Response) -> [Country]{
         
         var allCountries = [Country(rawData: response.rawData[0])]
+        var lastIndex = allCountries.count-1
+
+        if response.rawData[0].provinceState != "" {
+            allCountries[0].cities.append(ProvinceState(rawData: response.rawData[0]))
+        }
         
         for rawItem in response.rawData[1...] {
 
             let country = Country(rawData: rawItem)
-            let lastIndex = allCountries.count-1
             
             if allCountries[lastIndex].countryRegion == country.countryRegion {
                 allCountries[lastIndex].confirmed += country.confirmed
@@ -140,21 +103,25 @@ class CovidSummaryViewModel: ObservableObject{
             }
             else {
                 allCountries.append(country)
+                lastIndex = allCountries.count-1
+            }
+            
+            if rawItem.provinceState != "" {
+                allCountries[lastIndex].cities.append(ProvinceState(rawData: rawItem))
             }
         }
         
         return allCountries
     }
-    
-    
-    func getCitiesFromCountry(countryRegion: String) -> [ProvinceState]{
-        
-        guard let provinces = provincesStates?.filter({ province in
-            province.countryRegion == countryRegion
-        }) else { return [] }
-        return provinces
-    }
-    
+//
+//
+//    func getCitiesFromCountry(countryRegion: String) -> [ProvinceState]{
+//
+//        guard let provinces = provincesStates?.filter({ province in
+//            province.countryRegion == countryRegion
+//        }) else { return [] }
+//        return provinces
+//    }
     
     
 }
