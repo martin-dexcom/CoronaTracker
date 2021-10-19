@@ -49,7 +49,6 @@ class CovidSummaryViewModel: ObservableObject{
 
     let covidAPI = CovidAPI()
     var subscribers = Set<AnyCancellable>()
-    @Published var provincesStates : [ProvinceState]?
     @Published var countries : [Country]?
     @Published var covidTotalCases : Int?
     
@@ -69,33 +68,36 @@ class CovidSummaryViewModel: ObservableObject{
     
     private func arrangeCountriesWithCities(from response: Response) -> [Country]{
         
-        var allCountries = [Country(rawData: response.rawData[0])]
-        var lastIndex = allCountries.count-1
+        let firstCountry = response.rawData[0]
+        var allCountries = [Country(rawData: firstCountry)]
+        var lastCountryIndex = allCountries.count-1
         
-        if !response.rawData[0].provinceState.isEmpty {
-            allCountries[0].cities.append(ProvinceState(rawData: response.rawData[0]))
+        if !firstCountry.provinceState.isEmpty {
+            allCountries[0].cities.append(ProvinceState(rawData: firstCountry))
         }
         
-        for rawItem in response.rawData[1...] {
+        for rawCountry in response.rawData[1...] {
 
-            let country = Country(rawData: rawItem)
+            let country = Country(rawData: rawCountry)
             
-            if allCountries[lastIndex].countryRegion == country.countryRegion {
-                allCountries[lastIndex].confirmed += country.confirmed
-                allCountries[lastIndex].deaths += country.deaths
-                allCountries[lastIndex].recovered += country.recovered
+            if allCountries[lastCountryIndex].countryRegion == country.countryRegion {
+                allCountries[lastCountryIndex].confirmed += country.confirmed
+                allCountries[lastCountryIndex].deaths += country.deaths
+                allCountries[lastCountryIndex].recovered += country.recovered
             }
             else {
                 allCountries.append(country)
-                lastIndex = allCountries.count-1
+                lastCountryIndex = allCountries.count-1
             }
             
-            if !rawItem.provinceState.isEmpty {
-                allCountries[lastIndex].cities.append(ProvinceState(rawData: rawItem))
+            if !rawCountry.provinceState.isEmpty {
+                allCountries[lastCountryIndex].cities.append(ProvinceState(rawData: rawCountry))
             }
         }
         
         return allCountries
     }
+    
+    
     
 }
