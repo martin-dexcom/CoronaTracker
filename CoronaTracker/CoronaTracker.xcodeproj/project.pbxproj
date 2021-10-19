@@ -22,7 +22,7 @@
 		18B38FAA26EA627F00734FCE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18B38FA926EA627F00734FCE /* Preview Assets.xcassets */; };
 		18B38FB526EA628000734FCE /* CoronaTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B38FB426EA628000734FCE /* CoronaTrackerTests.swift */; };
 		18B38FC026EA628000734FCE /* CoronaTrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B38FBF26EA628000734FCE /* CoronaTrackerUITests.swift */; };
-		18B8C4B226FC473A008BB0CE /* GlobalCasesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B8C4B126FC473A008BB0CE /* GlobalCasesView.swift */; };
+		18B8C4B226FC473A008BB0CE /* GlobalCasesBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B8C4B126FC473A008BB0CE /* GlobalCasesBoxView.swift */; };
 		18D3E5CA26FBA9D1003548BD /* CustomProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D3E5C926FBA9D1003548BD /* CustomProgressView.swift */; };
 		18D3E5CE26FBB623003548BD /* CovidAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D3E5CD26FBB623003548BD /* CovidAPI.swift */; };
 		18D9C7A826FCDA71007B4EE3 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D9C7A726FCDA71007B4EE3 /* MockData.swift */; };
@@ -72,7 +72,7 @@
 		18B38FBB26EA628000734FCE /* CoronaTrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoronaTrackerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		18B38FBF26EA628000734FCE /* CoronaTrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoronaTrackerUITests.swift; sourceTree = "<group>"; };
 		18B38FC126EA628000734FCE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		18B8C4B126FC473A008BB0CE /* GlobalCasesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalCasesView.swift; sourceTree = "<group>"; };
+		18B8C4B126FC473A008BB0CE /* GlobalCasesBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalCasesBoxView.swift; sourceTree = "<group>"; };
 		18D3E5C926FBA9D1003548BD /* CustomProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomProgressView.swift; sourceTree = "<group>"; };
 		18D3E5CD26FBB623003548BD /* CovidAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CovidAPI.swift; sourceTree = "<group>"; };
 		18D9C7A726FCDA71007B4EE3 /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
@@ -129,14 +129,13 @@
 		18716BDD26F93F8500BAD4C2 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				189DEF132718CF44005F4E34 /* Tables */,
 				18B38FA426EA627E00734FCE /* CovidSummaryView.swift */,
-				18D9C7B126FD1440007B4EE3 /* GlobalCases */,
+				189DEF112718CECB005F4E34 /* CitiesSummaryView.swift */,
+				189DEF132718CF44005F4E34 /* Tables */,
+				18D9C7B126FD1440007B4EE3 /* Boxes */,
 				18716BE726FA3A2300BAD4C2 /* Titles.swift */,
 				18D3E5C926FBA9D1003548BD /* CustomProgressView.swift */,
 				18716BDE26FA2BA800BAD4C2 /* Modifiers.swift */,
-				189DEF0F2718CDDF005F4E34 /* CountryStatsBoxView.swift */,
-				189DEF112718CECB005F4E34 /* CitiesSummaryView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -232,12 +231,13 @@
 			path = Countries;
 			sourceTree = "<group>";
 		};
-		18D9C7B126FD1440007B4EE3 /* GlobalCases */ = {
+		18D9C7B126FD1440007B4EE3 /* Boxes */ = {
 			isa = PBXGroup;
 			children = (
-				18B8C4B126FC473A008BB0CE /* GlobalCasesView.swift */,
+				189DEF0F2718CDDF005F4E34 /* CountryStatsBoxView.swift */,
+				18B8C4B126FC473A008BB0CE /* GlobalCasesBoxView.swift */,
 			);
-			path = GlobalCases;
+			path = Boxes;
 			sourceTree = "<group>";
 		};
 		6C90556B5FC4ED1B565A38FB /* Pods */ = {
@@ -500,7 +500,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18B8C4B226FC473A008BB0CE /* GlobalCasesView.swift in Sources */,
+				18B8C4B226FC473A008BB0CE /* GlobalCasesBoxView.swift in Sources */,
 				18D9C7AB26FCE082007B4EE3 /* RowView.swift in Sources */,
 				18716BE826FA3A2300BAD4C2 /* Titles.swift in Sources */,
 				189DEF122718CECB005F4E34 /* CitiesSummaryView.swift in Sources */,

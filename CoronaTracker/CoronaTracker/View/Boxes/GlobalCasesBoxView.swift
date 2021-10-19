@@ -7,23 +7,12 @@
 
 import SwiftUI
 
-struct GlobalCasesView: View {
+struct GlobalCasesBoxView: View {
     var cases : Int?
 
     var body: some View {
         VStack (alignment: .leading, spacing: nil){
-            HStack {
                 TitleWithIcon(icon: "🌎", title: "Global Status").modifier(HeaderStyle())
-                Spacer()
-                if let covidCases = cases {
-                    Text("\(covidCases)").modifier(HeaderStyle())
-                        .accessibility(identifier: "id_global_covid_cases")
-                }
-                else {
-                    Text("").modifier(HeaderStyle())
-                        .overlay(CustomProgressView().padding(.trailing,35),alignment: .trailing)
-                }
-            }
             .padding(.top,18)
             Divider()
                 .background(Color(#colorLiteral(red: 0.2862745098, green: 0, blue: 0.6196078431, alpha: 1)))
@@ -44,10 +33,10 @@ struct GlobalCasesView: View {
     }
 }
 
-struct GlobalCasesBox_Previews: PreviewProvider {
+struct GlobalCasesBoxView_Previews: PreviewProvider {
     static var previews: some View {
         VStack{
-            GlobalCasesView()
+            GlobalCasesBoxView()
         }
         .padding(28)
         .background(Color.blue)

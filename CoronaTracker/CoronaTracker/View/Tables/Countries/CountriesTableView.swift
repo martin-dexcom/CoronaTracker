@@ -30,12 +30,14 @@ struct CountriesTableView: View {
             }
             else {
                 CustomProgressView(color: Color.white)
+                    .padding(.top,10)
+                Spacer()
             }
         }
         .modifier(CountriesTableStyle())
     }
     
-    // Not sure is there's other way to return nil implicitly
+    // Not sure if there's other way to return nil implicitly
     var searchResults: [Country]? {
         return countries?.filter({ searchText.isEmpty ? true : $0.countryRegion.contains(searchText) }) ?? nil
     }

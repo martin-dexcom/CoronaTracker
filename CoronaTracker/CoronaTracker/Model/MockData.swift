@@ -43,12 +43,12 @@ let testProvinces = [
 let testProvinceRow = RowContent(province: testProvince)
 
 let testCountryRow = RowContent(country: testCountry)
-
-let testCountriesList = testCountries.map({ country in
-    RowContent(country: country)
-})
-
-
-let testProvincesList = testProvinces.map({ province in
-    RowContent(province: province)
-})
+//
+//let testCountriesList = testCountries.map({ country in
+//    RowContent(country: country)
+//})
+//
+//
+//let testProvincesList = testProvinces.map({ province in
+//    RowContent(province: province)
+//})

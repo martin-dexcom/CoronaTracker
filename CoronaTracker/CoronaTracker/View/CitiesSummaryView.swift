@@ -14,9 +14,9 @@ struct CitiesSummaryView: View {
     var body: some View {
         ZStack {
             GradientBackgroundView()
-            VStack(alignment: .leading ,spacing: nil){
-                CountryStatsBoxView(content: CountryStatsBoxContent(country: country))
-                    .padding(.bottom, 100)
+            VStack(){
+                CountryStatsBoxView(country: country)
+                    .padding(.bottom, 50)
                 CitiesTableView(provinces: country.cities)
             }
             .padding(.leading,28)

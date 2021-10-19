@@ -29,8 +29,8 @@ struct CountryStatsBoxContent {
 struct CountryStatsBoxView: View {
     let content: CountryStatsBoxContent
     
-    init(content: CountryStatsBoxContent){
-        self.content = content
+    init(country: Country){
+        self.content = CountryStatsBoxContent(country: country)
     }
     
     var body: some View {
@@ -66,7 +66,7 @@ struct CountryStatsBoxView: View {
 struct CountryStatsBoxView_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
-            CountryStatsBoxView(content: CountryStatsBoxContent(country: testCountry))
+            CountryStatsBoxView(country: testCountry)
         }
         .padding(28)
         .background(Color.blue)

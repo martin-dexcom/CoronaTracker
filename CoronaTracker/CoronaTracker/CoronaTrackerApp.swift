@@ -12,14 +12,6 @@ struct CoronaTrackerApp: App {
     var body: some Scene {
         WindowGroup {
             CovidSummaryView()
-//            TabView {
-//                CovidSummaryView().tabItem {
-//                    Label("Summary", systemImage: "square.and.pencil").foregroundColor(.white)
-//                }
-//                CitiesSummaryView().tabItem{
-//                    Label("Cities Summary", systemImage: "square.and.pencil").foregroundColor(.white)
-//                }
-//            }
         }
     }
 }

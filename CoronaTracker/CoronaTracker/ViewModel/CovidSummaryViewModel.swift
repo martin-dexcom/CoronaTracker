@@ -10,7 +10,6 @@ import Combine
 import SwiftFlags
 
 
-
 struct ProvinceState: Identifiable{
     let id = UUID()
     let provinceState: String
@@ -46,9 +45,6 @@ struct Country: Identifiable{
     }
 }
 
-
-
-
 class CovidSummaryViewModel: ObservableObject{
 
     let covidAPI = CovidAPI()
@@ -57,17 +53,12 @@ class CovidSummaryViewModel: ObservableObject{
     @Published var countries : [Country]?
     @Published var covidTotalCases : Int?
     
-//    @Published var countriesForTest : [Country]?
-
-    
     func getAllCovidData() {
         covidAPI.getCovidStatsData().receive(on: RunLoop.main)
             .sink { response in
                 guard let response = response else { return }
                 self.totalCases(from: response)
-//                self .provincesStates = self.getAllProvinces(from: response)
                 self.countries = self.arrangeCountriesWithCities(from: response)
-//                self.printAllCities()
 
             }.store(in: &subscribers)
     }
@@ -76,19 +67,12 @@ class CovidSummaryViewModel: ObservableObject{
         covidTotalCases = response.summaryStats.global.confirmed
     }
     
-//    private func getAllProvinces(from response: Response) -> [ProvinceState]{
-//        return response.rawData.map({ rawCountry in
-//            ProvinceState(rawData: rawCountry)
-//        })
-//    }
-
-    
     private func arrangeCountriesWithCities(from response: Response) -> [Country]{
         
         var allCountries = [Country(rawData: response.rawData[0])]
         var lastIndex = allCountries.count-1
-
-        if response.rawData[0].provinceState != "" {
+        
+        if !response.rawData[0].provinceState.isEmpty {
             allCountries[0].cities.append(ProvinceState(rawData: response.rawData[0]))
         }
         
@@ -106,22 +90,12 @@ class CovidSummaryViewModel: ObservableObject{
                 lastIndex = allCountries.count-1
             }
             
-            if rawItem.provinceState != "" {
+            if !rawItem.provinceState.isEmpty {
                 allCountries[lastIndex].cities.append(ProvinceState(rawData: rawItem))
             }
         }
         
         return allCountries
     }
-//
-//
-//    func getCitiesFromCountry(countryRegion: String) -> [ProvinceState]{
-//
-//        guard let provinces = provincesStates?.filter({ province in
-//            province.countryRegion == countryRegion
-//        }) else { return [] }
-//        return provinces
-//    }
-    
     
 }

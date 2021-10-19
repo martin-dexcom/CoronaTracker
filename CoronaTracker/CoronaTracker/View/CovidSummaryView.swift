@@ -27,7 +27,7 @@ struct CovidSummaryView: View {
                 GradientBackgroundView()
                 VStack(alignment: .leading ,spacing: nil){
                     AppTitle(icon: "🦠", title: "CoronaTracker")
-                    GlobalCasesView(cases: viewModel.covidTotalCases)
+                    GlobalCasesBoxView(cases: viewModel.covidTotalCases)
                     CountriesTableView(countries: viewModel.countries)
                         .padding(.top, 21)
                 }

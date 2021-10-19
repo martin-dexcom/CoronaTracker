@@ -12,28 +12,27 @@ let defaultFlag = "🇲🇽"
 
 struct RowContent {
     let flagPlaceholder: String
-    let titlePlaholder: String
-    let confirmedPlaholder: Int
+    let titlePlaceholder: String
+    let confirmedPlaceholder: Int
     let deathsPlaceholder: Int
     let recoveredPlaceholder: Int
     
     init(country: Country){
         flagPlaceholder = SwiftFlags.flag(for: country.countryRegion) ?? defaultFlag
-        titlePlaholder = country.countryRegion
-        confirmedPlaholder = country.confirmed
+        titlePlaceholder = country.countryRegion
+        confirmedPlaceholder = country.confirmed
         deathsPlaceholder =  country.deaths
         recoveredPlaceholder = country.recovered
     }
     
     init(province: ProvinceState){
         flagPlaceholder = SwiftFlags.flag(for: province.countryRegion) ?? defaultFlag
-        titlePlaholder = province.provinceState
-        confirmedPlaholder = province.confirmed
+        titlePlaceholder = province.provinceState
+        confirmedPlaceholder = province.confirmed
         deathsPlaceholder =  province.deaths
         recoveredPlaceholder = province.recovered
     }
 }
-
 
 struct StatsView: View {
     let confirmed: Int
@@ -81,13 +80,13 @@ struct RowView: View {
                 Text(rowContent.flagPlaceholder)
                     .font(.system(size: 30))
                     .accessibility(identifier: "id_row_flag")
-                Text(rowContent.titlePlaholder)
+                Text(rowContent.titlePlaceholder)
                     .modifier(HeaderStyle())
                     .accessibility(identifier: id_row_name)
             }
             Spacer()
             StatsView(
-                confirmed: rowContent.confirmedPlaholder, deaths: rowContent.deathsPlaceholder, recovered: rowContent.recoveredPlaceholder
+                confirmed: rowContent.confirmedPlaceholder, deaths: rowContent.deathsPlaceholder, recovered: rowContent.recoveredPlaceholder
             )
         }
         .modifier(CountryRowStyle())
