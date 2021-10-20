@@ -66,12 +66,12 @@ class CovidSummaryViewModel: ObservableObject{
             }.store(in: &subscribers)
     }
     
-    private func totalCases(from response: Response){
+    private func totalCases(from response: CovidAPIResponse){
         covidTotalCases = response.summaryStats.global.confirmed
     }
     
     // The API returns cities, states (or provinces) and/or countries. We need to group the covid cases data (confirmed, deaths and recovered) by state
-    private func groupByState(from response: Response) -> [StateProvince]{
+    private func groupByState(from response: CovidAPIResponse) -> [StateProvince]{
         
         let firstStateProvince = response.rawData[0]
         var allStateProvinces = [StateProvince(rawData: firstStateProvince)]

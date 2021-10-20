@@ -10,9 +10,9 @@ import Combine
 
 class CovidAPI {
     
-    private var response = CurrentValueSubject<Response?, Never>(nil)
+    private var response = CurrentValueSubject<CovidAPIResponse?, Never>(nil)
     
-    func getCovidStatsData() -> CurrentValueSubject<Response?, Never>{
+    func getCovidStatsData() -> CurrentValueSubject<CovidAPIResponse?, Never>{
         guard let url = URL(string: "https://coronavirus.m.pipedream.net") else {
             print("Invalid URL")
             return response
@@ -21,7 +21,7 @@ class CovidAPI {
         URLSession.shared.dataTask(with: url) { [weak self] data , response, error in
             guard let self = self else { return }
             if let data = data {
-                if let response = try? JSONDecoder().decode(Response.self, from: data) {
+                if let response = try? JSONDecoder().decode(CovidAPIResponse.self, from: data) {
                     self.response.send(response)
                     return
                 }

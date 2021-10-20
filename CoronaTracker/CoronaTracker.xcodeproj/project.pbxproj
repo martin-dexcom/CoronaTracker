@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		182CF97326EFE72F008CF757 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182CF97226EFE72F008CF757 /* Response.swift */; };
+		182CF97326EFE72F008CF757 /* CovidAPIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182CF97226EFE72F008CF757 /* CovidAPIResponse.swift */; };
 		186DDB90271A40FF00E45849 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186DDB8F271A40FF00E45849 /* SearchBar.swift */; };
 		18716BDF26FA2BA800BAD4C2 /* Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18716BDE26FA2BA800BAD4C2 /* Modifiers.swift */; };
 		18716BE826FA3A2300BAD4C2 /* Titles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18716BE726FA3A2300BAD4C2 /* Titles.swift */; };
@@ -51,7 +51,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		182CF97226EFE72F008CF757 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		182CF97226EFE72F008CF757 /* CovidAPIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CovidAPIResponse.swift; sourceTree = "<group>"; };
 		186DDB8F271A40FF00E45849 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		18716BDE26FA2BA800BAD4C2 /* Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifiers.swift; sourceTree = "<group>"; };
 		18716BE726FA3A2300BAD4C2 /* Titles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Titles.swift; sourceTree = "<group>"; };
@@ -120,7 +120,7 @@
 		18716BDC26F93F7900BAD4C2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				182CF97226EFE72F008CF757 /* Response.swift */,
+				182CF97226EFE72F008CF757 /* CovidAPIResponse.swift */,
 				18D9C7A726FCDA71007B4EE3 /* MockData.swift */,
 			);
 			path = Model;
@@ -512,7 +512,7 @@
 				189DEF192718CF97005F4E34 /* CountriesListView.swift in Sources */,
 				189DEF102718CDDF005F4E34 /* CountryStatsBoxView.swift in Sources */,
 				18D3E5CE26FBB623003548BD /* CovidAPI.swift in Sources */,
-				182CF97326EFE72F008CF757 /* Response.swift in Sources */,
+				182CF97326EFE72F008CF757 /* CovidAPIResponse.swift in Sources */,
 				18B38FA326EA627E00734FCE /* CoronaTrackerApp.swift in Sources */,
 				186DDB90271A40FF00E45849 /* SearchBar.swift in Sources */,
 				189DEF152718CF80005F4E34 /* CountriesTableView.swift in Sources */,
