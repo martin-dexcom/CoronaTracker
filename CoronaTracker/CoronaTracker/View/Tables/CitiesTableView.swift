@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct CitiesTableView: View {
-    let tableTitle: String = "Cities"
-    var provinces: [ProvinceState]
+    let tableTitle: String = "States (Provinces)"
+    var stateProvinces: [StateProvince]
+    let flagForRows: String
 
     var body: some View {
         VStack() {
@@ -20,11 +21,11 @@ struct CitiesTableView: View {
                     .modifier(HeaderStyle())
                     Spacer()
             }
-            if !provinces.isEmpty  {
+            if !stateProvinces.isEmpty  {
                 ScrollView(.vertical){
                     LazyVStack(spacing:8){
-                        ForEach(provinces, id: \.id) { province in
-                            RowView(rowContent: province)
+                        ForEach(stateProvinces, id: \.id) { stateProvince in
+                            RowView(rowContent: stateProvince, flag: flagForRows)
                         }
                     }
                 }
@@ -46,6 +47,6 @@ struct CitiesTableView: View {
 
 struct CityTableView_Previews: PreviewProvider {
     static var previews: some View {
-        CitiesTableView(provinces: [])
+        CitiesTableView(stateProvinces: [], flagForRows: "")
     }
 }

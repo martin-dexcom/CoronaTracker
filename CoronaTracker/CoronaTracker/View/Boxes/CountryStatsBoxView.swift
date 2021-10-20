@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-
+// Structure for placing country data in a country stats view
 struct CountryStatsBoxContent {
     let flag: String
     let countryTitle: String

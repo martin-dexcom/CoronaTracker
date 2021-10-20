@@ -17,7 +17,7 @@ struct CitiesSummaryView: View {
             VStack(){
                 CountryStatsBoxView(country: country)
                     .padding(.bottom, 50)
-                CitiesTableView(provinces: country.cities)
+                CitiesTableView(stateProvinces: country.stateProvinces, flagForRows: country.flag)
             }
             .padding(.leading,28)
             .padding(.trailing,28)

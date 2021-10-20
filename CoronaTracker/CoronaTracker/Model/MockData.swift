@@ -10,17 +10,17 @@ import Foundation
 
 let testRawCountry = RawData(city: "", provinceState: "Guadalajara", countryRegion: "Mexico", confirmed: "120000", deaths: "1200", recovered: "20")
 
-let testProvince = ProvinceState(rawData: testRawCountry)
+let testProvince = StateProvince(rawData: testRawCountry)
 
-let testCountry = Country(province: testProvince)
+let testCountry = Country(stateProvince: testProvince)
 
 let testProvinces = [
-    ProvinceState(rawData: RawData(city: "", provinceState: "Guadalajara", countryRegion: "Mexico", confirmed: "120000", deaths: "1200", recovered: "0")),
-    ProvinceState(rawData: RawData(city: "", provinceState: "CDMX", countryRegion: "Mexico", confirmed: "120000", deaths: "1200", recovered: "0")),
-    ProvinceState(rawData: RawData(city: "", provinceState: "Tijuana", countryRegion: "Mexico", confirmed: "120000", deaths: "1200", recovered: "0")),
-    ProvinceState(rawData: RawData(city: "", provinceState: "Los Angeles", countryRegion: "USA", confirmed: "120000", deaths: "1200", recovered: "0")),
-    ProvinceState(rawData: RawData(city: "", provinceState: "Tokyo", countryRegion: "Japan", confirmed: "120000", deaths: "1200", recovered: "0")),
-    ProvinceState(rawData: RawData(city: "", provinceState: "Osaka", countryRegion: "Japan", confirmed: "120000", deaths: "1200", recovered: "0")),
+    StateProvince(rawData: RawData(city: "", provinceState: "Guadalajara", countryRegion: "Mexico", confirmed: "120000", deaths: "1200", recovered: "0")),
+    StateProvince(rawData: RawData(city: "", provinceState: "CDMX", countryRegion: "Mexico", confirmed: "120000", deaths: "1200", recovered: "0")),
+    StateProvince(rawData: RawData(city: "", provinceState: "Tijuana", countryRegion: "Mexico", confirmed: "120000", deaths: "1200", recovered: "0")),
+    StateProvince(rawData: RawData(city: "", provinceState: "Los Angeles", countryRegion: "USA", confirmed: "120000", deaths: "1200", recovered: "0")),
+    StateProvince(rawData: RawData(city: "", provinceState: "Tokyo", countryRegion: "Japan", confirmed: "120000", deaths: "1200", recovered: "0")),
+    StateProvince(rawData: RawData(city: "", provinceState: "Osaka", countryRegion: "Japan", confirmed: "120000", deaths: "1200", recovered: "0")),
 ]
 
 let auxRawData =
@@ -40,9 +40,9 @@ let auxRawData =
     RawData(city: "", provinceState: "", countryRegion: "Egypt", confirmed: "120000", deaths: "1200", recovered: "0"),
     RawData(city: "", provinceState: "", countryRegion: "China", confirmed: "120000", deaths: "1200", recovered: "0")
 ]
-let auxProvinces = auxRawData.map( { rawItem in ProvinceState(rawData: rawItem)} )
-let testCountries = auxProvinces.map( { province in Country(province: province)} )
+let auxProvinces = auxRawData.map( { rawItem in StateProvince(rawData: rawItem)} )
+let testCountries = auxProvinces.map( { province in Country(stateProvince: province)} )
 
-let testProvinceRow = RowContent(province: testProvince)
+let testProvinceRow = RowContent(stateProvince: testProvince, flag: "")
 let testCountryRow = RowContent(country: testCountry)
 

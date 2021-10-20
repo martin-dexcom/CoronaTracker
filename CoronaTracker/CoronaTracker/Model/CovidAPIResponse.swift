@@ -7,8 +7,7 @@
 
 import Foundation
 
-
-struct Response: Codable {
+struct CovidAPIResponse: Codable {
     let summaryStats: SummaryStats
     let rawData: [RawData]
 }

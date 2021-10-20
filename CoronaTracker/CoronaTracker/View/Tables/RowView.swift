@@ -6,10 +6,9 @@
 //
 
 import SwiftUI
-import SwiftFlags
-let defaultFlag = "🇲🇽"
 
 
+//Structure for placing row data, works for countries and provinces (or states)
 struct RowContent {
     let flagPlaceholder: String
     let titlePlaceholder: String
@@ -18,54 +17,29 @@ struct RowContent {
     let recoveredPlaceholder: Int
     
     init(country: Country){
-        flagPlaceholder = SwiftFlags.flag(for: country.countryRegion) ?? defaultFlag
+        flagPlaceholder = country.flag
         titlePlaceholder = country.countryRegion
         confirmedPlaceholder = country.confirmed
         deathsPlaceholder =  country.deaths
         recoveredPlaceholder = country.recovered
     }
     
-    init(province: ProvinceState){
-        flagPlaceholder = SwiftFlags.flag(for: province.countryRegion) ?? defaultFlag
-        titlePlaceholder = province.provinceState
-        confirmedPlaceholder = province.confirmed
-        deathsPlaceholder =  province.deaths
-        recoveredPlaceholder = province.recovered
+    init(stateProvince: StateProvince, flag: String){
+        flagPlaceholder = flag
+        titlePlaceholder = stateProvince.stateProvince
+        confirmedPlaceholder = stateProvince.confirmed
+        deathsPlaceholder =  stateProvince.deaths
+        recoveredPlaceholder = stateProvince.recovered
     }
 }
-
-struct StatsView: View {
-    let confirmed: Int
-    let deaths: Int
-    let recovered: Int
-    
-    var body: some View {
-        VStack(spacing:3) {
-            Text("\(confirmed)")
-                .font(.system(size: 20, weight: .black, design: .default))
-                .accessibility(identifier: "id_row_confirmed_stats")
-            HStack {
-                Text("\(deaths)")
-                    .foregroundColor(Color(#colorLiteral(red: 1, green: 0.3490196078, blue: 0.368627451, alpha: 1)))
-                    .accessibility(identifier: "id_row_deaths_stats")
-                //                Spacer()
-                Text("\(recovered)")
-                    .foregroundColor(Color(#colorLiteral(red: 0, green: 0.7490196078, blue: 0.3450980392, alpha: 1)))
-                    .accessibility(identifier: "id_row_recovered_stats")
-            }
-            .font(.system(size: 8, weight: .black, design: .default))
-        }
-    }
-}
-
 
 struct RowView: View {
     let rowContent: RowContent
     let id_row_name: String
     
-    init(rowContent: ProvinceState){
-        self.rowContent = RowContent(province: rowContent)
-        self.id_row_name = "id_row_"+rowContent.provinceState.replacingOccurrences(of: " ", with: "_")
+    init(rowContent: StateProvince, flag: String){
+        self.rowContent = RowContent(stateProvince: rowContent, flag: flag)
+        self.id_row_name = "id_row_"+rowContent.stateProvince.replacingOccurrences(of: " ", with: "_")
     }
     
     
@@ -94,11 +68,34 @@ struct RowView: View {
     }
 }
 
+struct StatsView: View {
+    let confirmed: Int
+    let deaths: Int
+    let recovered: Int
+    
+    var body: some View {
+        VStack(spacing:3) {
+            Text("\(confirmed)")
+                .font(.system(size: 20, weight: .black, design: .default))
+                .accessibility(identifier: "id_row_confirmed_stats")
+            HStack {
+                Text("\(deaths)")
+                    .foregroundColor(Color(#colorLiteral(red: 1, green: 0.3490196078, blue: 0.368627451, alpha: 1)))
+                    .accessibility(identifier: "id_row_deaths_stats")
+                //                Spacer()
+                Text("\(recovered)")
+                    .foregroundColor(Color(#colorLiteral(red: 0, green: 0.7490196078, blue: 0.3450980392, alpha: 1)))
+                    .accessibility(identifier: "id_row_recovered_stats")
+            }
+            .font(.system(size: 8, weight: .black, design: .default))
+        }
+    }
+}
 
 struct RowView_Previews: PreviewProvider {
     static var previews: some View {
         VStack{
-            RowView(rowContent: testProvince)
+            RowView(rowContent: testProvince, flag: "")
             RowView(rowContent: testCountry)
         }
     }

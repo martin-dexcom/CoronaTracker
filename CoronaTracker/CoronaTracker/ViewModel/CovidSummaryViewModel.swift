@@ -10,16 +10,18 @@ import Combine
 import SwiftFlags
 
 
-struct ProvinceState: Identifiable{
+let defaultFlag = "🇲🇽"
+
+struct StateProvince: Identifiable{
     let id = UUID()
-    let provinceState: String
+    let stateProvince: String
     let countryRegion: String
     var confirmed: Int
     var deaths: Int
     var recovered: Int
     
     init(rawData: RawData){
-        provinceState = rawData.provinceState
+        stateProvince = rawData.provinceState
         countryRegion = rawData.countryRegion
         confirmed = Int(rawData.confirmed) ?? 0
         deaths = Int(rawData.deaths) ?? 0
@@ -34,14 +36,14 @@ struct Country: Identifiable{
     var confirmed: Int
     var deaths: Int
     var recovered: Int
-    var cities: [ProvinceState] = []
+    var stateProvinces: [StateProvince] = []
     
-    init(province: ProvinceState){
-        flag = SwiftFlags.flag(for: province.countryRegion) ?? defaultFlag
-        countryRegion = province.countryRegion
-        confirmed = province.confirmed
-        deaths = province.deaths
-        recovered = province.recovered
+    init(stateProvince: StateProvince){
+        flag = SwiftFlags.flag(for: stateProvince.countryRegion) ?? defaultFlag
+        countryRegion = stateProvince.countryRegion
+        confirmed = stateProvince.confirmed
+        deaths = stateProvince.deaths
+        recovered = stateProvince.recovered
     }
 }
 
@@ -57,8 +59,9 @@ class CovidSummaryViewModel: ObservableObject{
             .sink { response in
                 guard let response = response else { return }
                 self.totalCases(from: response)
-                let provinces = self.groupByState(from: response)
-                self.countries = self.groupByCountries(from: provinces)
+                
+                let stateProvinces = self.groupByState(from: response)
+                self.countries = self.groupByCountries(from: stateProvinces)
 
             }.store(in: &subscribers)
     }
@@ -68,43 +71,47 @@ class CovidSummaryViewModel: ObservableObject{
     }
     
     // The API returns cities, states (or provinces) and/or countries. We need to group the covid cases data (confirmed, deaths and recovered) by state
-    private func groupByState(from response: Response) -> [ProvinceState]{
+    private func groupByState(from response: Response) -> [StateProvince]{
         
-        let firstProvince = response.rawData[0]
-        var allProvinces = [ProvinceState(rawData: firstProvince)]
+        let firstStateProvince = response.rawData[0]
+        var allStateProvinces = [StateProvince(rawData: firstStateProvince)]
                         
         for rawProvince in response.rawData[1...] {
             
-            let lastProvinceIndex = allProvinces.count-1
-            let province = ProvinceState(rawData: rawProvince)
+            let lastStateProvinceIndex = allStateProvinces.count-1
             
-            if allProvinces[lastProvinceIndex].provinceState.isEqual(province.provinceState)  {
-                allProvinces[lastProvinceIndex].confirmed += province.confirmed
-                allProvinces[lastProvinceIndex].deaths += province.deaths
-                allProvinces[lastProvinceIndex].recovered += province.recovered
+            let stateProvince = StateProvince(rawData: rawProvince)
+            
+            if allStateProvinces[lastStateProvinceIndex].stateProvince.isEqual(stateProvince.stateProvince)  {
+                allStateProvinces[lastStateProvinceIndex].confirmed += stateProvince.confirmed
+                allStateProvinces[lastStateProvinceIndex].deaths += stateProvince.deaths
+                allStateProvinces[lastStateProvinceIndex].recovered += stateProvince.recovered
             }
             else {
-                allProvinces.append(province)
+                // The API returns 2 items as states that aren't valid: "Unknown" and "Recovered", we won't add them
+                if !stateProvince.stateProvince.isEqual("Unknown") && !stateProvince.stateProvince.isEqual("Recovered") {
+                    allStateProvinces.append(stateProvince)
+                }
             }
+            
         }
-        
-        return allProvinces
+        return allStateProvinces
     }
     
     // We need to group the states list (or provinces) by country, as well the covid cases data (confirmed, deaths and recovered).
-    private func groupByCountries(from provinces: [ProvinceState]) -> [Country]{
+    private func groupByCountries(from stateProvinces: [StateProvince]) -> [Country]{
         
-        let firstCountry = provinces[0]
-        var allCountries = [Country(province: firstCountry)]
+        let firstCountry = stateProvinces[0]
+        var allCountries = [Country(stateProvince: firstCountry)]
         var lastCountryIndex = allCountries.count-1
         
-        if !firstCountry.provinceState.isEmpty {
-            allCountries[0].cities.append(firstCountry)
+        if !firstCountry.stateProvince.isEmpty {
+            allCountries[0].stateProvinces.append(firstCountry)
         }
         
-        for rawCountry in provinces[1...] {
+        for rawCountry in stateProvinces[1...] {
 
-            let country = Country(province: rawCountry)
+            let country = Country(stateProvince: rawCountry)
             
             if allCountries[lastCountryIndex].countryRegion.isEqual(country.countryRegion) {
                 allCountries[lastCountryIndex].confirmed += country.confirmed
@@ -116,8 +123,8 @@ class CovidSummaryViewModel: ObservableObject{
                 lastCountryIndex = allCountries.count-1
             }
             
-            if !rawCountry.provinceState.isEmpty {
-                allCountries[lastCountryIndex].cities.append(rawCountry)
+            if !rawCountry.stateProvince.isEmpty {
+                allCountries[lastCountryIndex].stateProvinces.append(rawCountry)
             }
         }
         
