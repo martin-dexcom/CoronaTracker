@@ -14,6 +14,9 @@ struct AppTitleStyle: ViewModifier {
         content
             .foregroundColor(Color.white)
             .font(.system(size: 37, weight: .black, design: .default))
+            .scaledToFill()
+            .minimumScaleFactor(0.5)
+            .lineLimit(1)
     }
 }
 

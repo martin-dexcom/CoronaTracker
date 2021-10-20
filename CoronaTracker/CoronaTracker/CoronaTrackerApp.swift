@@ -12,6 +12,8 @@ struct CoronaTrackerApp: App {
     var body: some Scene {
         WindowGroup {
             CovidSummaryView()
+                .accentColor(.white)
         }
+        
     }
 }

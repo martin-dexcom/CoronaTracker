@@ -28,6 +28,7 @@ struct Stats: Codable {
 // MARK: - RawData
 struct RawData: Codable, Identifiable {
     let id = UUID()
+    let city: String
     let provinceState: String
     let countryRegion: String
     let confirmed: String
@@ -35,6 +36,7 @@ struct RawData: Codable, Identifiable {
     let recovered: String
     
   private enum CodingKeys: String, CodingKey {
+    case city = "Admin2"
     case provinceState = "Province_State"
     case countryRegion = "Country_Region"
     case confirmed = "Confirmed"

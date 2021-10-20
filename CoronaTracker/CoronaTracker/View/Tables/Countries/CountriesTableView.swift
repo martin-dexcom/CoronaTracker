@@ -39,7 +39,7 @@ struct CountriesTableView: View {
     
     // Not sure if there's other way to return nil implicitly
     var searchResults: [Country]? {
-        return countries?.filter({ searchText.isEmpty ? true : $0.countryRegion.contains(searchText) }) ?? nil
+        return countries?.filter({ searchText.isEmpty ? true : $0.countryRegion.uppercased().contains(searchText.uppercased()) }) ?? nil
     }
 }
 
